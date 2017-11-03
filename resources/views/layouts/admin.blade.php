@@ -1,8 +1,6 @@
     <div class="uk-width-1-4@m">
         <div class="uk-card uk-card-default uk-card-body uk-margin">
           <h3 class="uk-card-title uk-text-center">Admin funkcijos</h3>
-              <!-- TODO jei tiekėjų nėra neleidžia daryti kategorijos, jei kategorijos nėra neleidžia produkto pridėti-->
-
               <p uk-margin>
                 <ul class="uk-list uk-link-text">
                   <li><a href="{{ route('supplier.index') }}">Pridėti <u>tiekėją</u></a></li>

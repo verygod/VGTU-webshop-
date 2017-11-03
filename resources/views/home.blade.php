@@ -98,7 +98,7 @@
         {{ Form::open(array('route' => 'updatecart')) }}
         @foreach($cart as $item)
         <tr>
-            <td>{{$item->name}}</td>
+            <td><a href="{{route('shop.show', $item->id)}}" class="uk-button uk-button-text">{{$item->name}}</a></td>
             <td><input class="uk-input uk-form-blank uk-form-width-small" type="number" name="qty{{$item->id}}" value="{{$item->qty}}"></td>
             <td>$ {{$item->price}}</td>
             <td ><a href="" uk-icon="icon: close"></a></td>

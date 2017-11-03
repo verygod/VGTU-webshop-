@@ -30,7 +30,7 @@
             <li><a href="{{ url('/')}}">Parduotuvė</a></li>
             <li>
                 <a href="#">Kategorijos</a>
-                <div class="uk-navbar-dropdown">
+                <div class="uk-navbar-dropdown" uk-dropdown="mode: click">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                         @foreach($categories as $category)
                         <li><a href="{{route('category.show',$category->id)}}">{{$category->categoryname}}</a></li>

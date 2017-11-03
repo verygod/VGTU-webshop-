@@ -5131,7 +5131,7 @@ ul.uk-nav-sub {
   right: -5px;
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 .uk-modal-close-outside:hover {
   color: #fff;
@@ -5152,7 +5152,6 @@ ul.uk-nav-sub {
   top: 0;
   right: 0;
   padding: 20px;
-  background: #fff;
 }
 /* ========================================================================
    Component: Lightbox

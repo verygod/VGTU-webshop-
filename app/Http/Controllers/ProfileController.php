@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use Auth;
+
 class ProfileController extends Controller
 {
   /**
@@ -22,6 +25,8 @@ class ProfileController extends Controller
    */
   public function index()
   {
-      return view('profile');
+      $id = Auth::id();
+      $profile = User::where('id', $id)->get();
+      return view('profile')->with('profile', $profile);
   }
 }
