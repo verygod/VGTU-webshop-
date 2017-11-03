@@ -11,6 +11,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
 <h4>TO-DO</h4>
 <ul>
   <li>Sutvarkyti visus ištrinimus</li>
+  <li>Leisti sukelti daugiau nuotraukų vienam produktui</li>
   <li>Vartotojo profilio redagavimas</li>
   <li>Užsakymų matymas admin/pirkėjo vartotojams</li>
   <li>Užsakymų statusų keitimas administracijai</li>
