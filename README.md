@@ -18,6 +18,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
   <li>Užsakymų statusų keitimas administracijai</li>
   <li>Patobulinti paiešką, bei padaryti, kad kategorijose ieškotų tik toje kategorijoje</li>
   <li>Responsive + dizaino patobulinimai prisijungume ir t.t</li>
+  <li>Profile nuotrauka</li>
 </ul>
 
 
