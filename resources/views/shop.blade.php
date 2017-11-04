@@ -14,13 +14,13 @@
     </div>
 </div>
 
-<div class="uk-grid-small uk-child-width-1-4@m" uk-grid id="searchbox" >
+<div class="uk-grid-small uk-child-width-1-4@s" uk-grid id="searchbox" >
   @foreach($products as $product)
       <div id="searchreload">
           <div class="uk-card uk-card-default uk-card uk-card-hover">
             <a href="{{ route('shop.show', $product->id) }}">
               <div class="uk-card-media-top">
-                <div class="uk-background-image@m uk-background-cover uk-background-muted uk-height-medium uk-width-large uk-flex uk-flex-center uk-flex-middle"
+                <div class="uk-background-image uk-background-cover uk-background-muted uk-height-medium uk-width-large uk-flex uk-flex-center uk-flex-middle"
                  style="background-image: url(../{{$product->imageURL}})" uk-parallax="bgy: -200" >
                 </div>
               </div>
