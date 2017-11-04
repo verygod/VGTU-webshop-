@@ -8,7 +8,7 @@
 Arba <code>php artisan migrate</code><br>
 Arba įsikelkit failą iš <code>SQL</code> aplanko
 
-<h4>TO-DO</h4>
+<h4>TODO</h4>
 <ul>
   <li>Keliant nuotraukas turi persivadinti pavadinimas</li>
   <li>Sutvarkyti visus ištrinimus</li>
@@ -18,4 +18,16 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
   <li>Užsakymų statusų keitimas administracijai</li>
   <li>Patobulinti paiešką, bei padaryti, kad kategorijose ieškotų tik toje kategorijoje</li>
   <li>Responsive + dizaino patobulinimai prisijungume ir t.t</li>
+</ul>
+
+
+<h4>ISSUES</h4>
+<ul>
+  <li>Responsive visai neveikia kaip priklauso
+    <ul>
+    <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl</li>
+    <li>Prastai susitvarko leidimų puslapis</li>
+    </ul>
+  </li>
+
 </ul>
