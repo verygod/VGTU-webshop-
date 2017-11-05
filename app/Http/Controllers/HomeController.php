@@ -68,8 +68,6 @@ class HomeController extends Controller
     $user->telephone = $request['telephone'];
     $user->update();
 
-
-
     return redirect('home')->with('flash_message','Informacija atnaujinta!');
   }
 
@@ -97,5 +95,19 @@ class HomeController extends Controller
       Cart::update($item->rowId, $qty);
     }
     return redirect('home')->with('flash_message','Prekės atnaujintos!');
+  }
+
+
+  public function removeFromCart($id)
+  {
+    Cart::remove($id);
+    return redirect('home')->with('flash_message','Prekė pašalinta!');
+  }
+
+
+  public function clearCart()
+  {
+    Cart::destroy();
+    return redirect('home')->with('flash_message','Prekės pašalintos!');
   }
 }

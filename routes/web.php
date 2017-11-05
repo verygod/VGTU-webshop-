@@ -30,6 +30,7 @@ Route::get('admin/suppliers', 'AdminController@suppliers');
 Route::get('admin/categories', 'AdminController@categories');
 
 
+
 Route::resource('shop', 'ShopController');
 
 Route::resource('supplier', 'SupplierController');
@@ -57,6 +58,16 @@ Route::post('updatecart', [
     'uses' => 'HomeController@updateCart'
 ]);
 
+Route::get('removefromcart/{id}/destroy/', [
+    'as' => 'removefromcart',
+    'uses' => 'HomeController@removeFromCart'
+]);
+
+Route::get('clearcart', [
+    'as' => 'clearcart',
+    'uses' => 'HomeController@clearCart'
+]);
+
 Route::get('products/{id}/destroy/', [
     'as' => 'products_destroy',
     'uses' => 'ProductController@destroy'
@@ -68,7 +79,7 @@ Route::get('categories/{id}/destroy/', [
 ]);
 
 Route::get('supplier/{id}/destroy/', [
-    'as' => 'suppier_destroy',
+    'as' => 'suppliers_destroy',
     'uses' => 'SupplierController@destroy'
 ]);
 

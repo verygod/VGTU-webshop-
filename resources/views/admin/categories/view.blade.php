@@ -11,7 +11,7 @@
 
 
 <div>
-    <div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-card uk-card-default uk-card-body uk-overflow-auto">
       <table class="uk-table uk-table-divider">
         <thead>
           <tr>
@@ -34,7 +34,7 @@
             <td>
               <ul class="uk-iconnav">
                 <li><a href="{{ route('category.edit', $category->id) }}" uk-icon="icon: file-edit"></a></li>
-                <li><a href="#" uk-icon="icon: trash"></a></li>
+                <li><a href="{{ route('categories_destroy', $category->id) }}" uk-icon="icon: trash" onclick="return confirm('Ar tikrai trinti šią kategoriją {{ $category->categoryname }}?')"></a></li>
               </ul>
             </td>
         </tr>

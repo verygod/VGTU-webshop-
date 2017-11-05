@@ -113,4 +113,11 @@ class ShopController extends Controller
 
         // if ($request->is('admin'))
     }
+
+    public function searchvue(Request $request)
+    {
+       $query = Input::get('query');
+       $products = Product::where('name','like','%'.$query.'%')->get();
+       return response()->json($products);
+    }
 }

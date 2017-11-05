@@ -101,7 +101,9 @@
             <td><a href="{{route('shop.show', $item->id)}}" class="uk-button uk-button-text">{{$item->name}}</a></td>
             <td><input class="uk-input uk-form-blank uk-form-width-small" type="number" name="qty{{$item->id}}" value="{{$item->qty}}"></td>
             <td>$ {{$item->price}}</td>
-            <td ><a href="" uk-icon="icon: close"></a></td>
+            <td >
+              <a href="{!! route('removefromcart', $item->rowId) !!}" uk-icon="icon: close" onclick="return confirm('Ar tikrai trinti?')"></a>
+            </td>
         </tr>
         @endforeach
       </tbody>
@@ -117,16 +119,14 @@
     </table>
     <p class="uk-margin">
        <button class="uk-button uk-button-secondary">Apmokėti</button>
-       <button class="uk-button uk-button-secondary">Išvalyti krepšelį</button>
+       <a class="uk-button uk-button-secondary" href="{{ route('clearcart') }}">Išvalyti krepšelį</a>
     </p>
   </div>
 </div>
 </div>
 </div>
-
 </body>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
 
 @endsection

@@ -16,6 +16,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/uikit.css') }}" rel="stylesheet">
     <link href="{{ asset('css/uikit-rtl.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
 </head>
 
 <body >
@@ -253,7 +255,10 @@
         @yield('content')
 
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/uikit.min.js') }}"></script>
+    <script src="{{ asset('js/vue.js') }}"></script>
     <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
+
 </body>
 </html>

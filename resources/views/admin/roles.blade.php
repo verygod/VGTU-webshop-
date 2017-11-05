@@ -7,7 +7,7 @@
 
 
 <div class="uk-offcanvas-content uk-margin" style="width: 99%">
-  <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
+  <div class="uk-grid-medium uk-child-width-expand@m" uk-grid>
 
     @component('layouts.admin')
     @endcomponent

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 
+use App\Porduct;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,4 +16,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/searchvue',function(){
+  $query = Input::get('query');
+  $products = Product::where('name','like','%'.$query.'%')->get();
+  return response()->json($products);
 });

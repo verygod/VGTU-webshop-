@@ -5,15 +5,15 @@
 
 <body>
 <div class="uk-offcanvas-content uk-margin" style="width: 99%">
-  <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
+  <div class="uk-grid-medium uk-child-width-expand@m" uk-grid>
 
     @component('layouts.admin')
     @endcomponent
 
-<div class="uk-width-1-2">
+<div class="uk-width-1-2@m">
     <div class="uk-card uk-card-default uk-card-body">
     <h1>Visi leidimai</h1>
-    <div>
+    <div class="uk-overflow-auto">
           <table class="uk-table uk-table-divider">
             <thead>
               <tr>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="uk-width-1-4">
+<div class="uk-width-1-4@m">
   <div class="uk-card uk-card-default uk-card-body uk-text-center">
     {{ Form::open(array('url' => 'permissions')) }}
     <h1>Pridėti leidimą</h1>

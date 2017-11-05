@@ -11,8 +11,8 @@
 
 
 <div>
-    <div class="uk-card uk-card-default uk-card-body">
-      <table class="uk-table uk-table-divider">
+    <div class="uk-card uk-card-default uk-card-body uk-overflow-auto">
+      <table class="uk-table">
         <thead>
           <tr>
             <td>id</td>
@@ -30,13 +30,13 @@
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
             <td>{{$product->quantity}}</td>
-            <td>$ {{$product->price}}</td>
+            <td>${{$product->price}}</td>
             <td>{{$product->categoryname}}</td>
             <td><a href="{{ route('supplier.edit', $product->supplierID) }}" class="uk-link-reset uk-button-text">{{$product->supplierName}}</a></td>
             <td>
               <ul class="uk-iconnav">
                 <li><a href="{{ route('products.edit', $product->id) }}" uk-icon="icon: file-edit"></a></li>
-                <li><a href="#" uk-icon="icon: trash"></a></li>
+                <li><a href="{{ route('products_destroy', $product->id) }}" uk-icon="icon: trash" onclick="return confirm('Ar tikrai trinti šį produktą {{ $product->name }}?')"></a></li>
               </ul>
             </td>
         </tr>

@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Session;
 
 use App\Supplier;
+use App\Product;
 
 class SupplierController extends Controller
 {
@@ -27,7 +28,8 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::all();
-        return view('admin.supplier')->with('suppliers', $suppliers);
+        $products = Product::where('supplierID', $suppliers->id);
+        return view('admin.supplier')->with('suppliers', $suppliers)->with('products', $products);
     }
 
     /**
@@ -134,6 +136,10 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        $supplier -> delete();
+
+      return redirect()->route('admin.supplier')
+          ->with('flash_message','Ištrinta.');
     }
 }
