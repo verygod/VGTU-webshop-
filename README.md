@@ -11,7 +11,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
 <h4>TODO</h4>
 <ul>
   <li>Keliant nuotraukas turi persivadinti pavadinimas</li>
-  <li>Sutvarkyti visus ištrinimus</li>
+  <li>Ištrinimų dialogų dizainas</li>
   <li>Leisti sukelti daugiau nuotraukų vienam produktui</li>
   <li>Vartotojo profilio redagavimas</li>
   <li>Užsakymų matymas admin/pirkėjo vartotojams</li>
