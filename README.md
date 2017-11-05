@@ -15,6 +15,8 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
 <ul>
   <li>Keliant nuotraukas turi persivadinti pavadinimas</li>
   <li>Ištrinimų dialogų dizainas</li>
+  <li>Produktų, kategorijų trinimas [+]</li>
+  <li>Trinimo patvirtinimas [+]</li>
   <li>Leisti sukelti daugiau nuotraukų vienam produktui</li>
   <li>Vartotojo profilio redagavimas</li>
   <li>Užsakymų matymas admin/pirkėjo vartotojams</li>
@@ -30,7 +32,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
   <li>Responsive visai neveikia kaip priklauso
     <ul>
     <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl [+]</li>
-    <li>Prastai susitvarko leidimų puslapis</li>
+    <li>Prastai susitvarko leidimų puslapis [+]</li>
     </ul>
   </li>
 
