@@ -17,7 +17,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
   <li>Ištrinimų dialogų dizainas</li>
   <li>Produktų, kategorijų trinimas [+]</li>
   <li>Trinimo patvirtinimas [+]</li>
-  <li>Leisti sukelti daugiau nuotraukų vienam produktui</li>
+  <li>Leisti sukelti daugiau nuotraukų vienam produktui [-] </li>
   <li>Vartotojo profilio redagavimas</li>
   <li>Užsakymų matymas admin/pirkėjo vartotojams</li>
   <li>Užsakymų statusų keitimas administracijai</li>
