@@ -1,0 +1,104 @@
+      @foreach($products as $product)
+      <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m" uk-grid>
+
+        <div class="uk-card-media-left uk-background-center-center uk-background-cover" style="background-image: url(../{{$product->imageURL}}); background-size: 60% auto; background-blend-mode: contain">
+
+
+        </div>
+
+          <div>
+              <div class="uk-card-body">
+                  <h3 class="uk-card-title">{{$product->name}}</h3>
+                  <p>{{$product->description}}</p>
+
+                  <p>
+                    @if($product->price != $product->oldprice AND $product->price < $product->oldprice)
+                    <a href="{{ route('addtocart', $product->id)}}" class="uk-button uk-button-default">Pirkti už <strong>$ {{$product->price}} </strong>/ <s>$ {{$product->oldprice}}</s></a>
+                    <br><span></span>
+                    @else
+                    <a href="{{ route('addtocart', $product->id)}}" class="uk-button uk-button-default">Pirkti už <strong>$ {{$product->price}}</strong></a>
+                    @endif
+                  </p>
+              </div>
+          </div>
+      </div>
+
+
+
+        <nav class="uk-navbar-container uk-navbar-primary" uk-navbar >
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active">
+              <a href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+            </li>
+            <li><a href="{{ url('/')}}">Parduotuvė</a></li>
+            <li>
+                <a href="#">Kategorijos</a>
+                <div class="uk-navbar-dropdown" uk-dropdown="mode: click">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        @foreach($categories as $category)
+                        <li><a href="{{route('category.show',$category->id)}}">{{$category->categoryname}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+        @guest
+      <li>
+        <ul class="uk-iconnav" style="margin-right: 2rem">
+          <a href="#modal-login" class="uk-icon-link" uk-icon="icon: cart" style="margin-right: 1rem" uk-toggle></a>
+          <a href="#" class="uk-icon-link" uk-icon="icon: users"></a>
+          <div class="uk-navbar-dropdown"  uk-dropdown="mode: click">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                  <li><a href="#modal-login" uk-toggle>Prisijungti</a></li>
+                  <li><a href="#modal-register" uk-toggle>Registruotis</a></li>
+              </ul>
+          </div>
+        </ul>
+      </li>
+      @else
+      <li>
+        <ul class="uk-iconnav" style="margin-right: 2rem">
+          @if(Cart::count() > 0)
+          <div title="
+          Prekių: <strong> {{Cart::count()}} </strong><br>
+          Kaina: <strong> $ {{Cart::total()}}</strong>" uk-tooltip="pos: bottom">
+          <a href="{{url('home')}}" class="uk-icon-link" uk-icon="icon: cart" style="margin-right: 1rem">
+
+          </a>
+          </div>
+          @else
+          <a href="{{url('home')}}" class="uk-icon-link" uk-icon="icon: cart" style="margin-right: 1rem"></a>
+          @endif
+
+
+          <a href="#" class="uk-icon-link" uk-icon="icon: settings"></a>
+          <div class="uk-navbar-dropdown" uk-dropdown="mode: click">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                @role('Admin')
+                  <li><a href="{{ route('admin') }}" ><b>Admin</b></a></li>
+                @endrole
+                  <li><a href="{{ route('profile') }}">Profilis</a></li>
+                  <li>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Atsijungti
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                  </li>
+              </ul>
+          </div>
+        </ul>
+      </li>
+      @endguest
+      </ul>
+    </div>
+  </nav>

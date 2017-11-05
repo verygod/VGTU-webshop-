@@ -28,7 +28,7 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers = Supplier::all();
-        $products = Product::where('supplierID', $suppliers->id);
+        $products = Product::all();
         return view('admin.supplier')->with('suppliers', $suppliers)->with('products', $products);
     }
 

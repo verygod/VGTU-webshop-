@@ -11,7 +11,7 @@
     @endcomponent
 
 
-<div class="uk-width-2-3">
+<div class="uk-width-2-3@m">
     <div class="uk-card uk-card-default uk-card-body uk-text-center">
     <h1>Redaguoti vartotoją</h1>
     <div class="uk-grid-item-match">

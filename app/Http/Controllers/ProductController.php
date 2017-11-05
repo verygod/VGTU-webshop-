@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Input;
 
 use App\Category;
 use App\Supplier;
@@ -156,22 +158,27 @@ class ProductController extends Controller
       ]);
 
 
-      $product = Product::where('id', $id)->find($id);
 
+      $product = Product::where('id', $id)->find($id);
       if(!empty($request['imageURL'])) {
+
       $image = $request['imageURL'];
       $destination = 'storage/';
+      $imagename = time();
+      $rand = rand(10,1000);
       $filename = Str::lower(
-          pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME)
-          .'-'
+          pathinfo($id.'_'.$imagename, PATHINFO_FILENAME)
+          .'_'
           .uniqid()
           .'.'
           .$image->getClientOriginalExtension()
-      );
-        $imagepath = $image->move($destination, $filename);
-      } else {
-        $imagepath = $product->imageURL;
-      }
+        );
+          $imagepath = $image->move($destination, $filename);
+        } else {
+          $imagepath = $product->imageURL;
+        }
+
+      
 
 
       if ($product->price != $request['price']) {
@@ -193,6 +200,8 @@ class ProductController extends Controller
 
 
 
+
+      // $images = new Image;
       $images = Image::where('productID', $id)->first();
       $images->name = $request['name'];
       $images->image = $imagepath;

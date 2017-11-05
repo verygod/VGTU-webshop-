@@ -8,7 +8,7 @@
       <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m" uk-grid>
           <div class="uk-card-media-left">
               @foreach($images as $image)
-              <div uk-lightbox>
+              <div uk-lightbox class="uk-text-center">
                 <a href="../../{{$image->image}}" data-caption="{{$product->name}}">
                     <img src="../../{{$image->image}}" alt="{{$product->name}}">
                 </a>

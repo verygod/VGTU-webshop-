@@ -18,19 +18,16 @@
         {!! Form::open(['route' => 'supplier.store']) !!}
         <span class="uk-label" for="supplierName">Tiekėjo pavadinimas</span>
         <div class="uk-margin">
-            <!-- <input class="uk-input" type="text" placeholder="Tiekėjo pavadinimas" name="name"> -->
             {!! Form::text('supplierName', null,['class' => 'uk-input']) !!}
         </div>
 
         <span class="uk-label" for="contact">Kontaktinis asmuo</span>
         <div class="uk-margin">
-            <!-- <input class="uk-input" type="text" placeholder="Kontaktinis asmuo" name="contact"> -->
             {!! Form::text('contact', null,['class' => 'uk-input']) !!}
         </div>
 
         <span class="uk-label" for="address">Adresas</span>
         <div class="uk-margin">
-            <!-- <input class="uk-input" type="text" placeholder="Adresas" name="address"> -->
             {!! Form::text('address', null,['class' => 'uk-input']) !!}
         </div>
 

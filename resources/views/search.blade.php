@@ -1,14 +1,15 @@
 @if(!empty($products))
-  @foreach($products as $product)
+@foreach($products as $product)
       <div id="searchreload">
           <div class="uk-card uk-card-default uk-card uk-card-hover">
-            <a href="{{ route('shop.show', $product->id) }}">
-              <div class="uk-card-media-top">
-                <div class="uk-background-image uk-background-cover uk-background-muted uk-height-medium uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
-                 style="background-image: url(../{{$product->imageURL}})" uk-parallax="bgy: -200" >
-                </div>
-              </div>
-            </a>
+
+            <div class="uk-card-media-top">
+              <a href="{{ route('shop.show', $product->id) }}">
+                <canvas style="background-image: url(../{{$product->imageURL}}); background-size: 70%;" width="350px" height="300px" class="uk-background-center-center uk-background-cover uk-background-image">
+                  
+                </canvas>
+              </a>
+            </div>
               <div class="uk-card-body">
                   <h3 class="uk-card-title"><a class="uk-link-muted" href="{{ route('shop.show', $product->id) }}">{{$product->name}}</a></h3>
 

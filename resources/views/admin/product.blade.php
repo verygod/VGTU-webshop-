@@ -66,10 +66,11 @@
         </div>
 
 
+        <span id="preview"></span>
         <span class="uk-label" for="imageURL">Nuotraukos įkelimas</span>
         <div class="uk-margin" uk-margin>
           <div uk-form-custom="target: true">
-            <input type="file" name="imageURL" >
+            <input type="file" name="imageURL" id="imageURL">
             <input class="uk-input uk-form-width-large" type="text" placeholder="" disabled>
           </div>
         </div>
@@ -89,5 +90,19 @@
 
   </div>
 </div>
+
+<script src="{{ asset('js/ImageTools.js') }}"></script>
+<script type="text/javascript">
+  document.getElementById('imageURL').onchange = function(evt) {
+    ImageTools.resize(this.files[0], {
+        width: 320, // maximum width
+        height: 240 // maximum height
+    }, function(blob, didItResize) {
+        // didItResize will be true if it managed to resize it, otherwise false (and will return the original file as 'blob')
+        document.getElementById('preview').src = window.URL.createObjectURL(blob);
+        // you can also now upload this blob using an XHR.
+    });
+};
+</script>
 
 @endsection

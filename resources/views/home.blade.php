@@ -6,7 +6,7 @@
 <div class="uk-offcanvas-content uk-margin" style="width: 99%">
   <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
 
-      <div class="uk-width-1-4">
+      <div class="uk-width-1-4@m">
         <div class="uk-card uk-card-default uk-card-body">
           <h3 class="uk-card-title">Sveiki, {{ Auth::user()->name }}</h3>
           <p>Esate prisijungęs prie mūsų elektroininės parduotuvės!</p>
@@ -64,14 +64,6 @@
                     {!! Form::text('telephone', null,['class' => 'uk-input']) !!}
                   </div>
                 </div>
-
-
-                <!-- <div class="uk-width-1-1@m">
-                    <span class="uk-label" for="postcode">El.Paštas</span>
-                  <div class="uk-margin" >
-                    {!! Form::text('email', null,['class' => 'uk-input uk-disabled']) !!}
-                  </div>
-                </div> -->
 
                 <p uk-margin class="uk-text-center">
                  {{ Form::submit('Atnaujinti informaciją', array('class' => 'uk-button uk-button-secondary')) }}

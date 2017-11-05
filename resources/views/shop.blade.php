@@ -5,7 +5,7 @@
 
 <div class="uk-offcanvas-content" style="width: 80%; margin: 0 auto;">
 
-<div class="uk-grid-small uk-child-width-expand@s uk-margin" uk-grid>
+<div class="uk-grid-small uk-child-width-expand@m uk-margin" uk-grid>
     <div class="uk-width-1-1">
       <form class="uk-search uk-search-large uk-align-center">
         <span uk-search-icon></span>
@@ -14,17 +14,18 @@
     </div>
 </div>
 
-<div class="uk-grid-small uk-child-width-1-4@m" uk-grid id="searchbox" >
+<div class="uk-grid-small uk-child-width-1-4@m class="uk-grid-match"" uk-grid id="searchbox" >
   @foreach($products as $product)
       <div id="searchreload">
           <div class="uk-card uk-card-default uk-card uk-card-hover">
-            <a href="{{ route('shop.show', $product->id) }}">
-              <div class="uk-card-media-top">
-                <div class="uk-background-image uk-background-cover uk-background-center-center uk-background-muted uk-height-medium uk-width-1-1 uk-flex uk-flex-center uk-flex-middle"
-                 style="background-image: url(../{{$product->imageURL}})">
-                </div>
-              </div>
-            </a>
+
+            <div class="uk-card-media-top">
+              <a href="{{ route('shop.show', $product->id) }}">
+                <canvas style="background-image: url(../{{$product->imageURL}}); background-size: 70%;" width="350px" height="300px" class="uk-background-center-center uk-background-cover uk-background-image">
+                  
+                </canvas>
+              </a>
+            </div>
               <div class="uk-card-body">
                   <h3 class="uk-card-title"><a class="uk-link-muted" href="{{ route('shop.show', $product->id) }}">{{$product->name}}</a></h3>
 
