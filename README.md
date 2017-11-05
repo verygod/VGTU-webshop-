@@ -8,11 +8,17 @@
 Arba <code>php artisan migrate</code><br>
 Arba įsikelkit failą iš <code>SQL</code> aplanko
 
+<code>[+] - sutvarkyta</code>
+<br>
+<code>[-] - pradėta</code>
+
 <h4>TODO</h4>
 <ul>
   <li>Keliant nuotraukas turi persivadinti pavadinimas</li>
-  <li>Sutvarkyti visus ištrinimus</li>
-  <li>Leisti sukelti daugiau nuotraukų vienam produktui</li>
+  <li>Ištrinimų dialogų dizainas</li>
+  <li>Produktų, kategorijų trinimas [+]</li>
+  <li>Trinimo patvirtinimas [+]</li>
+  <li>Leisti sukelti daugiau nuotraukų vienam produktui [-] </li>
   <li>Vartotojo profilio redagavimas</li>
   <li>Užsakymų matymas admin/pirkėjo vartotojams</li>
   <li>Užsakymų statusų keitimas administracijai</li>
@@ -26,8 +32,8 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
 <ul>
   <li>Responsive visai neveikia kaip priklauso
     <ul>
-    <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl</li>
-    <li>Prastai susitvarko leidimų puslapis</li>
+    <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl [+]</li>
+    <li>Prastai susitvarko leidimų puslapis [+]</li>
     </ul>
   </li>
 
