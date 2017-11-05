@@ -9,6 +9,7 @@ Arba <code>php artisan migrate</code><br>
 Arba įsikelkit failą iš <code>SQL</code> aplanko
 
 <code>[+] - sutvarkyta</code>
+<br>
 <code>[-] - pradėta</code>
 
 <h4>TODO</h4>
