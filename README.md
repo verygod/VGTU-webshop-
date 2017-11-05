@@ -8,6 +8,9 @@
 Arba <code>php artisan migrate</code><br>
 Arba įsikelkit failą iš <code>SQL</code> aplanko
 
+<code>[+] - sutvarkyta</code>
+<code>[-] - pradėta</code>
+
 <h4>TODO</h4>
 <ul>
   <li>Keliant nuotraukas turi persivadinti pavadinimas</li>
@@ -26,7 +29,7 @@ Arba įsikelkit failą iš <code>SQL</code> aplanko
 <ul>
   <li>Responsive visai neveikia kaip priklauso
     <ul>
-    <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl</li>
+    <li>Neatsiranda nuotraukos sumažinus ekrano dydį pagr.psl [+]</li>
     <li>Prastai susitvarko leidimų puslapis</li>
     </ul>
   </li>
