@@ -16,6 +16,8 @@ use App\Supplier;
 use App\Product;
 use App\User;
 
+use App\Orders;
+use App\OrderedItems;
 
 
 class HomeController extends Controller
@@ -40,10 +42,16 @@ class HomeController extends Controller
       $user = User::where('id', $id)->first();
       $products = Product::all();
       $cart = Cart::content();
+
+      $orders = Orders::where('customerid', $id)->get();
+      $OrderedItems = OrderedItems::all();
+
       return view('home')
               ->with('cart', $cart)
               ->with('products', $products)
-              ->with('user', $user);
+              ->with('user', $user)
+              ->with('orders', $orders)
+              ->with('OrderedItems', $OrderedItems);
   }
 
   public function update(request $request, $id)
@@ -109,5 +117,55 @@ class HomeController extends Controller
   {
     Cart::destroy();
     return redirect('home')->with('flash_message','Prekės pašalintos!');
+  }
+
+  public function checkout()
+  {
+    
+        $id = Auth::id();
+        $user = User::where('id', $id)->first();
+        $total = Cart::total();
+        $content = Cart::content();
+        $shippingMethod = 'DPD';
+
+        if (!empty($user->address) && !empty($user->city) && !empty($user->postcode) &&
+            !empty($user->telephone) && !empty($user->email) && count($content) >= 1) {
+
+        $order = new Orders;
+
+        $order->customerid = $id;
+        $order->shipping = $shippingMethod;
+        $order->totalprice = $total;
+        $order->shippingAddress = $user->address;
+        $order->shippingCity = $user->city;
+        $order->shippingPostcode = $user->postcode;
+        $order->shippingEmail = $user->email;
+        $order->shippingTelephone = $user->telephone;
+        $order->status = 1;
+        $order->save();
+
+
+        foreach ($content as $row) {
+          $OrderedItems = new OrderedItems;
+
+          $OrderedItems->name = $row->name;
+          $OrderedItems->price = $row->price;
+          $OrderedItems->quantity = $row->qty;
+          $OrderedItems->orderID = $order->id;
+          $OrderedItems->save();
+
+          $product = Product::where('id', $row->id)->first();
+          $product->quantity = ($product->quantity)-($row->quantity);
+          $product->update();
+
+        }
+
+
+            Cart::destroy();
+
+            return redirect()->route('home.index')->with('flash_message', 'Užsakymas <b></b> patvirtinas!<br> Savo vartotojo sąsajoje matysite užsakymo eigą.');
+            } else {
+            return redirect()->route('home.index')->with('error_message', 'Neužpildėte visos informacijos arba krepšelis yra tuščias.');
+          }
   }
 }

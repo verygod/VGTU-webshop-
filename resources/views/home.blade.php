@@ -6,16 +6,26 @@
 <div class="uk-offcanvas-content uk-margin" style="width: 99%">
   <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
 
-      <div class="uk-width-1-4@m">
-        <div class="uk-card uk-card-default uk-card-body">
-          <h3 class="uk-card-title">Sveiki, {{ Auth::user()->name }}</h3>
-          <p>Esate prisijungęs prie mūsų elektroininės parduotuvės!</p>
+      <div class="uk-width-1-4@m ">
+        <div class="uk-card uk-card-default uk-card-body uk-visible@m">
+          <span class="">
+            <h3 class="uk-card-title">Sveiki, {{ Auth::user()->name }}</h3>
+            <p>Esate prisijungęs prie mūsų elektroininės parduotuvės!</p>
+          </span>
+
         </div>
 
             <div class="uk-card uk-margin" uk-margin>
               <div class="uk-card uk-card-default uk-card-body ">
-                <h3 class="uk-card-title uk-text-center">Kontaktinė informacija</h3>
+                <h3 class="uk-card-title uk-text-center uk-visible@m">
+                  Kontaktinė informacija
+                </h3>
 
+                <span class="uk-hidden@m uk-align-center">
+                  <button class="uk-button uk-button-text" type="button" uk-toggle="target: .toggle">Kontaktinė informacija</button>
+                </span>
+
+              <div class="toggle">
                 {{ Form::model($user, array('route' => array('home.update', $user->id), 'method' => 'PUT')) }}
 
 
@@ -70,7 +80,7 @@
                </p>
              </div>
               {{ Form::close() }}
-
+              </div>
               </div>
               </div>
             </div>
@@ -110,10 +120,73 @@
       </tfoot>
     </table>
     <p class="uk-margin">
-       <button class="uk-button uk-button-secondary">Apmokėti</button>
+       <a class="uk-button uk-button-secondary" href="{{ route('checkout') }}">Apmokėti</a>
        <a class="uk-button uk-button-secondary" href="{{ route('clearcart') }}">Išvalyti krepšelį</a>
     </p>
   </div>
+
+
+  @foreach($orders as $order)
+    <div class="uk-margin">
+        <div class="uk-card uk-card-default uk-card-large uk-card-body">
+
+              <b>ORD:{{$order->id}}</b>
+
+              @if($order->status = 1)
+                <em style="color: #3498db">Užsakyta</em>
+              @elseif($order->status = 2)
+                <em style="color: #f1c40f">Paruošta</em>
+              @elseif($order->status = 3)
+                <em style="color: #1abc9c">Išsiųsta</em>
+              @elseif($order->status = 4)
+                <em style="color: #2ecc71">Įvykdyta</em>
+              @else
+                <em style="color: #e74c3c">Klaida! Kreiptis į administraciją.</em>
+              @endif
+                  
+              <table class="uk-table">
+                <thead>
+                  <tr>
+                    <td>#</td>
+                    <td>Prekė</td>
+                    <td>Kiekis</td>
+                    <td>Kaina (vnt.)</td>
+                    <td>Bendra kaina</td>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><h6>Viso: <b>${{$order->totalprice}}</b></h6> </td>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  @php
+                    $i = 1;
+                  @endphp
+                @foreach($OrderedItems as $oi)
+
+                  @if($order->id == $oi->orderID)
+                  <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$oi->name}}</td>
+                    <td>{{$oi->quantity}} vnt.</td>
+                    <td>${{$oi->price}}</td>
+                    <td>${{$oi->price * $oi->quantity}}</td>
+                  </tr>
+                  @endif
+                @endforeach
+                </tbody>
+              </table>
+        </div>
+    </div>
+  @endforeach
+
+
+
 </div>
 </div>
 </div>

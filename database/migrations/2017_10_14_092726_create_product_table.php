@@ -24,7 +24,7 @@ class CreateProductTable extends Migration
           $table->string('imageURL');
           $table->integer('categoryID');
           $table->integer('supplierID');
-          $table->boolean('status');
+          $table->integer('status');
 
           $table->timestamps();
       });

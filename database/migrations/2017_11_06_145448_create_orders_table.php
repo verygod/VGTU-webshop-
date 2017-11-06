@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
         $table->timestamps();
       });
     }
-  }
+    }
 
     /**
      * Reverse the migrations.
@@ -37,6 +37,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists('orders');
+        Schema::dropIfExists('orders');
     }
 }

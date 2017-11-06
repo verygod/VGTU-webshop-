@@ -13,13 +13,13 @@ class CreateOrderedItemsTable extends Migration
      */
     public function up()
     {
-      if (!Schema::hasTable('orderProducts')) {
-        Schema::create('orderProducts', function (Blueprint $table) {
+      if (!Schema::hasTable('ordered_items')) {
+        Schema::create('ordered_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('orderedName');
-            $table->string('orderedPrice');
-            $table->string('orderedQuantity');
-            $table->string('orderedID');
+            $table->string('name');
+            $table->string('price');
+            $table->string('quantity');
+            $table->string('orderID');
             $table->timestamps();
         });
       }
@@ -32,6 +32,6 @@ class CreateOrderedItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orderProducts');
+        Schema::dropIfExists('ordered_items');
     }
 }
