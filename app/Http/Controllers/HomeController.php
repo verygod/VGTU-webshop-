@@ -43,7 +43,7 @@ class HomeController extends Controller
       $products = Product::all();
       $cart = Cart::content();
 
-      $orders = Orders::where('customerid', $id)->get();
+      $orders = Orders::where('customerid', $id)->paginate(3);
       $OrderedItems = OrderedItems::all();
 
       return view('home')

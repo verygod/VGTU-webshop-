@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="uk-grid-small uk-child-width-1-4@m class="uk-grid-match"" uk-grid id="searchbox" >
+<div class="uk-grid-small uk-child-width-1-4@m uk-grid-match" uk-grid id="searchbox" >
   @foreach($products as $product)
       <div id="searchreload">
           <div class="uk-card uk-card-default uk-card uk-card-hover">
