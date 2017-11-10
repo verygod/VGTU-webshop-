@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 
+use App\Orders;
+use App\OrderedItems;
 class ProfileController extends Controller
 {
   /**
@@ -27,6 +29,13 @@ class ProfileController extends Controller
   {
       $id = Auth::id();
       $profile = User::where('id', $id)->get();
-      return view('profile')->with('profile', $profile);
+
+      $orders = Orders::where('customerid', $id)->paginate(4);
+      $OrderedItems = OrderedItems::all();
+
+      return view('profile')
+        ->with('orders', $orders)
+        ->with('OrderedItems', $OrderedItems)
+        ->with('profile', $profile);
   }
 }

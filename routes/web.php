@@ -28,6 +28,7 @@ Route::get('admin', 'AdminController@index')->name('admin');
 Route::get('admin/products', 'AdminController@products');
 Route::get('admin/suppliers', 'AdminController@suppliers');
 Route::get('admin/categories', 'AdminController@categories');
+
 Route::get('checkout', [
     'as' => 'checkout',
     'uses' => 'HomeController@checkout'

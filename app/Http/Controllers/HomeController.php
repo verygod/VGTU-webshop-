@@ -165,7 +165,7 @@ class HomeController extends Controller
 
             return redirect()->route('home.index')->with('flash_message', 'Užsakymas <b></b> patvirtinas!<br> Savo vartotojo sąsajoje matysite užsakymo eigą.');
             } else {
-            return redirect()->route('home.index')->with('error_message', 'Neužpildėte visos informacijos arba krepšelis yra tuščias.');
+            return redirect()->route('home.index')->with('flash_message', 'Neužpildėte visos informacijos arba krepšelis yra tuščias.');
           }
   }
 }

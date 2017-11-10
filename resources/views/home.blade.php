@@ -2,17 +2,22 @@
 
 @section('content')
 
-<body>
-<div class="uk-offcanvas-content uk-margin" style="width: 99%">
-  <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
 
-      <div class="uk-width-1-4@m ">
+<div uk-grid>
+    <div>
+        <div uk-grid>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+<div class="uk-grid-small uk-margin" uk-grid>
+      <div class="uk-width-1-4@m">
         <div class="uk-card uk-card-default uk-card-body uk-visible@m">
           <span class="">
             <h3 class="uk-card-title">Sveiki, {{ Auth::user()->name }}</h3>
             <p>Esate prisijungęs prie mūsų elektroininės parduotuvės!</p>
           </span>
-
         </div>
 
             <div class="uk-card uk-margin" uk-margin>
@@ -80,12 +85,14 @@
                </p>
              </div>
               {{ Form::close() }}
-              </div>
-              </div>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 
-<div>
+{{-- #Things!!!! --}}
+
+<div class="uk-width-3-4@m">
     <div class="uk-card uk-card-default uk-card-body">
       <table class="uk-table uk-table-divider">
         <thead>
@@ -183,20 +190,20 @@
                 @endforeach
                 </tbody>
               </table>
+            </div>
+          </div>
+        @endforeach
+
+      <div class="uk-grid" uk-grid >
+        <div class="uk-align-center uk-margin" id="pagination">
+          {{ $orders->links('layouts.pagination') }}
         </div>
-    </div>
-  @endforeach
-<div class="uk-grid" uk-grid >
-  <div class="uk-align-center uk-margin" id="pagination">
-    {{ $orders->links('layouts.pagination') }}
+      </div>
   </div>
-</div>
 
 
+
 </div>
-</div>
-</div>
-</body>
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
 @endsection

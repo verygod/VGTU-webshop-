@@ -28,7 +28,8 @@
             </div>
               <div class="uk-card-body">
                   <h3 class="uk-card-title"><a class="uk-link-muted" href="{{ route('shop.show', $product->id) }}">{{$product->name}}</a></h3>
-
+                  
+                  <span class="">
                   <?php
                   $string = strip_tags($product->description);
 
@@ -38,6 +39,7 @@
                   }
                     echo '<p>'.$string.'</p>';
                    ?>
+                   </span>
               </div>
               <div class="uk-card-footer uk-text-center">
                 @if($product->price != $product->oldprice AND $product->price < $product->oldprice)
