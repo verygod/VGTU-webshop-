@@ -15,6 +15,7 @@ use App\Category;
 use App\Supplier;
 use App\Product;
 use App\User;
+use App\AddToBasket;
 
 use App\Orders;
 use App\OrderedItems;
@@ -41,7 +42,7 @@ class HomeController extends Controller
       $id = Auth::id();
       $user = User::where('id', $id)->first();
       $products = Product::all();
-      $cart = Cart::content();
+      $cart = AddToBasket::all();
 
       $orders = Orders::where('customerid', $id)->paginate(3);
       $OrderedItems = OrderedItems::all();
@@ -83,7 +84,18 @@ class HomeController extends Controller
   {
 
     $product = Product::where('id', $id)->first();
+    $verify = AddToBasket::find($id);
 
+    if($product->productID == $id) {
+    $cart = AddToBasket::where([
+      ['id', '=', $id], 
+      ['userID', '=', $auth]])->first();
+    $cart->productID = $product->id;
+    $cart->name = $product->name;
+    $cart->price = $product->price;
+    $cart->quantity = $product->quantity + 1;
+    $cart->userID = Auth::id();
+    $cart->update();
     Cart::add(
       $product->id,
       $product->name,
@@ -91,7 +103,32 @@ class HomeController extends Controller
       $product->price
     );
 
-      return redirect('/')->with('flash_message','Prekė pridėta į krepšelį!');
+
+    return redirect('/')->with('flash_message','Prekė atnaujinta!');
+    } elseif($product->ProductID != $id) {
+    $cart = new AddToBasket;
+    $cart->productID = $product->id;
+    $cart->name = $product->name;
+    $cart->price = $product->price;
+    $cart->quantity = 1;
+    $cart->userID = Auth::id();
+    $cart->save();
+    Cart::add(
+      $product->id,
+      $product->name,
+      1,
+      $product->price
+    );
+
+    return redirect('/')->with('flash_message','Prekė pridėta į krepšelį!');
+    } else {
+      return back()->with('flash_message','Nope!', $id);
+    }
+
+
+
+
+      
   }
 
   public function updateCart(Request $request)
@@ -108,6 +145,12 @@ class HomeController extends Controller
 
   public function removeFromCart($id)
   {
+    $auth = Auth::id();
+    $cart = AddToBasket::where([
+      ['id', '=', $id], 
+      ['userID', '=', $auth]])->first();
+    $cart -> delete();
+
     Cart::remove($id);
     return redirect('home')->with('flash_message','Prekė pašalinta!');
   }
@@ -115,7 +158,14 @@ class HomeController extends Controller
 
   public function clearCart()
   {
-    Cart::destroy();
+    $auth = Auth::id();
+    $cart = AddToBasket::where('userID', '=', $auth)->get();
+
+    foreach ($cart as $key) {
+      $key->delete();
+    }
+    
+
     return redirect('home')->with('flash_message','Prekės pašalintos!');
   }
 
@@ -125,7 +175,7 @@ class HomeController extends Controller
         $id = Auth::id();
         $user = User::where('id', $id)->first();
         $total = Cart::total();
-        $content = Cart::content();
+        $content = AddToBasket::all();
         $shippingMethod = 'DPD';
 
         if (!empty($user->address) && !empty($user->city) && !empty($user->postcode) &&
@@ -150,18 +200,23 @@ class HomeController extends Controller
 
           $OrderedItems->name = $row->name;
           $OrderedItems->price = $row->price;
-          $OrderedItems->quantity = $row->qty;
+          $OrderedItems->quantity = $row->quantity;
           $OrderedItems->orderID = $order->id;
           $OrderedItems->save();
 
-          $product = Product::where('id', $row->id)->first();
-          $product->quantity = ($product->quantity)-($row->quantity);
-          $product->update();
+          // $product = Product::where('id', $row->id)->first();
+          // $product->quantity = ($product->quantity)-($row->quantity);
+          // $product->update();
 
         }
 
 
-            Cart::destroy();
+        $cart = AddToBasket::where('userID', '=', $id)->get();
+        foreach ($cart as $key) {
+          $key->delete();
+        }
+
+        Cart::destroy();
 
             return redirect()->route('home.index')->with('flash_message', 'Užsakymas <b></b> patvirtinas!<br> Savo vartotojo sąsajoje matysite užsakymo eigą.');
             } else {

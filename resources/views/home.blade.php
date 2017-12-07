@@ -109,11 +109,11 @@
         <tr>
             <td><a href="{{route('shop.show', $item->id)}}" class="uk-button uk-button-text">{{$item->name}}</a></td>
             <td>
-              <input class="uk-input uk-form-blank uk-form-width-small" type="number" name="qty{{$item->id}}" value="{{$item->qty}}" id="{{$item->id}}">
+              <input class="uk-input uk-form-blank uk-form-width-small" type="number" name="qty{{$item->id}}" value="{{$item->quantity}}" id="{{$item->id}}">
             </td>
             <td>$ {{$item->price}}</td>
             <td >
-              <a href="{!! route('removefromcart', $item->rowId) !!}" uk-icon="icon: close" onclick="return confirm('Ar tikrai trinti?')"></a>
+              <a href="{!! route('removefromcart', $item->id) !!}" uk-icon="icon: close" onclick="return confirm('Ar tikrai trinti?')"></a>
             </td>
         </tr>
         @endforeach
