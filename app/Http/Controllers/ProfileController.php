@@ -30,7 +30,7 @@ class ProfileController extends Controller
       $id = Auth::id();
       $profile = User::where('id', $id)->get();
 
-      $orders = Orders::where('customerid', $id)->paginate(4);
+      $orders = Orders::where('customerid', $id)->orderBy('id', 'desc')->paginate(4);
       $OrderedItems = OrderedItems::all();
 
       return view('profile')
